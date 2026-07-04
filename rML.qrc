@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="/">
+    <file>mlPlus.png</file>
+  </qresource>
+</RCC>
