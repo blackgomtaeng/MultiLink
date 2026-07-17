@@ -10,17 +10,20 @@ SOURCES += \
     formlabelscreenviewa.cpp \
     formlabelscreenviewb.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    stackedwidgettaboptions.cpp
 
 HEADERS += \
     formlabelscreenviewa.h \
     formlabelscreenviewb.h \
-    mainwindow.h
+    mainwindow.h \
+    stackedwidgettaboptions.h
 
 FORMS += \
     formlabelscreenviewa.ui \
     formlabelscreenviewb.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    stackedwidgettaboptions.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

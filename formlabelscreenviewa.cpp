@@ -4,56 +4,44 @@
 FormLabelScreenViewA::FormLabelScreenViewA(QWidget *parent):
     QWidget(parent),
     ui(new Ui::FormLabelScreenViewA),
-    sizes(new QList<int>()),
-    tabList(new QList<QWidget*>()),
-    plusTab(nullptr),
-    tabCounter(1)
+    tabs(new TabStruct)
 {
     ui->setupUi(this);
-    sizes->append(ui->splitter->width() * 0.6);
-    sizes->append(ui->splitter->width() * 0.4);
-    ui->splitter->setSizes(*sizes);
-    ui->tabWidget->setTabText(0, QString("Tab %1").arg(tabCounter));
-    tabList->append(ui->tabWidget->widget(0));
-    plusTab = new QWidget();
-    ui->tabWidget->addTab(plusTab, QIcon(":/mlPlus.png"), QString());
+    tabs->tabWidget = ui->tabWidget;
 
-    connect(ui->tabWidget, &QTabWidget::currentChanged, this, [=](int index){
-        if (index == ui->tabWidget->count() - 1) {
-            tabCounter++;
-            QWidget *newTab = new QWidget();
-            tabList->append(newTab);
-            QString tabName = QString("Tab %1").arg(tabCounter);
-            ui->tabWidget->insertTab(ui->tabWidget->count() - 1, newTab, tabName);
-            ui->tabWidget->setCurrentIndex(ui->tabWidget->count() - 2);
-        }
-    });
+    tabs->tabWidget->clear();
+    tabs->tabWidget->setTabsClosable(true);
 
-    connect(ui->tabWidget->tabBar(), &QTabBar::tabBarDoubleClicked, this, [=](int index){
-        if (index >= 0 && index < ui->tabWidget->count() - 1) { // + 탭 제외
-            bool ok;
-            QString newName = QInputDialog::getText(this, tr("Rename Tab"), tr("New tab name:"), QLineEdit::Normal, ui->tabWidget->tabText(index), &ok);
-            if (ok && !newName.isEmpty()) ui->tabWidget->setTabText(index, newName);
-        }
-    });
+    tabs->newTab = new QWidget;
+    tabs->tabWidget->addTab(tabs->newTab, "New Tab");
+
+    tabs->plusTab = new QWidget;
+    tabs->tabWidget->addTab(tabs->plusTab, QIcon(":/mlPlus.png"), "");
+
+    tabs->plusIndex = tabs->tabWidget->count() - 1;
+    tabs->tabWidget->tabBar()->setTabButton(tabs->plusIndex, QTabBar::RightSide, nullptr);
+
+    connect(tabs->tabWidget, &QTabWidget::tabBarClicked, this, &FormLabelScreenViewA::handleClickedTab);
+    connect(tabs->tabWidget, &QTabWidget::tabCloseRequested, this, &FormLabelScreenViewA::handleTabCloseRequested);
 }
 
-FormLabelScreenViewA::~FormLabelScreenViewA()
-{
-    delete sizes;
-    delete tabList;
+FormLabelScreenViewA::~FormLabelScreenViewA() {
+    delete tabs;
     delete ui;
 }
 
-void FormLabelScreenViewA::resizeEvent(QResizeEvent *event)
-{
-    QWidget::resizeEvent(event);
+void FormLabelScreenViewA::handleClickedTab(int index) {
+    if (index == tabs->tabWidget->count() - 1) {
+        QWidget *newTab = new QWidget;
+        tabs->tabWidget->insertTab(tabs->tabWidget->count() - 1, newTab, "New Tab");
+        tabs->tabWidget->setCurrentIndex(tabs->tabWidget->count() - 2);
+    }
+}
 
-    int totalWidth = ui->splitter->width();
-    int listWidth  = totalWidth * 0.6;
-    int tabWidth   = totalWidth * 0.4;
-
-    QList<int> newSizes;
-    newSizes << listWidth << tabWidth;
-    ui->splitter->setSizes(newSizes);
+void FormLabelScreenViewA::handleTabCloseRequested(int index) {
+    if (index != tabs->tabWidget->count() - 1) {
+        tabs->widget = tabs->tabWidget->widget(index);
+        tabs->tabWidget->removeTab(index);
+        delete tabs->widget;
+    }
 }

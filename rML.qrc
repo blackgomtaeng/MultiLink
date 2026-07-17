@@ -1,5 +1,9 @@
 <RCC>
-  <qresource prefix="/">
-    <file>mlPlus.png</file>
-  </qresource>
+    <qresource prefix="/">
+        <file>mlPlus.png</file>
+        <file>mlCiclePlus.png</file>
+        <file>mlFiles.png</file>
+        <file>mlReset.png</file>
+        <file>mlSave.png</file>
+    </qresource>
 </RCC>
