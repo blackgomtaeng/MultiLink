@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>StackedWidgetTabOptions</class>
+ <widget class="QStackedWidget" name="StackedWidgetTabOptions">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>400</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>StackedWidget</string>
+  </property>
+  <property name="currentIndex">
+   <number>0</number>
+  </property>
+  <widget class="QWidget" name="page01Directory">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QGroupBox" name="groupBox">
+      <property name="title">
+       <string>Directory</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="0" column="0">
+        <widget class="QSplitter" name="sDirectory">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <widget class="QListWidget" name="lw01TreeDirectory"/>
+         <widget class="QWidget" name="layoutWidget">
+          <layout class="QGridLayout" name="cblBox" rowstretch="0,10" columnstretch="10,0,0" rowminimumheight="0,10" columnminimumwidth="10,0,0">
+           <item row="0" column="0">
+            <widget class="QComboBox" name="cb01PathData">
+             <property name="editable">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QPushButton" name="b01Reset">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="rML.qrc">
+               <normaloff>:/mlReset.png</normaloff>:/mlReset.png</iconset>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QPushButton" name="b02Save">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="rML.qrc">
+               <normaloff>:/mlSave.png</normaloff>:/mlSave.png</iconset>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0" colspan="3">
+            <widget class="QLabel" name="l01Preview">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="page02Files">
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0">
+     <widget class="QGroupBox" name="gbFiles">
+      <property name="title">
+       <string>Text and Image Files</string>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QTableWidget" name="tw01Files"/>
+       </item>
+       <item>
+        <widget class="QSplitter" name="sFiles">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <widget class="QWidget" name="layoutWidget">
+          <layout class="QGridLayout" name="cblBoxFile01" rowstretch="0,10" columnstretch="10,0,0" rowminimumheight="0,10" columnminimumwidth="10,0,0">
+           <item row="0" column="0">
+            <widget class="QComboBox" name="cb01FilePathData">
+             <property name="editable">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QPushButton" name="b01FileReset">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="rML.qrc">
+               <normaloff>:/mlReset.png</normaloff>:/mlReset.png</iconset>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QPushButton" name="b02FileSave">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="rML.qrc">
+               <normaloff>:/mlSave.png</normaloff>:/mlSave.png</iconset>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0" colspan="3">
+            <widget class="QLabel" name="l01FilePreview">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="page03Executables">
+   <layout class="QGridLayout" name="gridLayout_4">
+    <item row="0" column="0">
+     <widget class="QGroupBox" name="gbExecutables">
+      <property name="title">
+       <string>Executable Files</string>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QTableWidget" name="tw01Executable"/>
+       </item>
+       <item>
+        <widget class="QSplitter" name="sExecutables">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <widget class="QWidget" name="layoutWidget_3">
+          <layout class="QGridLayout" name="cblBoxExecutable01" rowstretch="0,10" columnstretch="10,0,0" rowminimumheight="0,10" columnminimumwidth="10,0,0">
+           <item row="0" column="0">
+            <widget class="QComboBox" name="cb01ExecutablePathData">
+             <property name="editable">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QPushButton" name="b01ExecutableReset">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="rML.qrc">
+               <normaloff>:/mlReset.png</normaloff>:/mlReset.png</iconset>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QPushButton" name="b02ExecutableSave">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="rML.qrc">
+               <normaloff>:/mlSave.png</normaloff>:/mlSave.png</iconset>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0" colspan="3">
+            <widget class="QLabel" name="l01ExecutablePreview">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources>
+  <include location="rML.qrc"/>
+ </resources>
+ <connections/>
+</ui>
